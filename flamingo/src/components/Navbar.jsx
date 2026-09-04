@@ -10,7 +10,7 @@ import { ShopContext } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
  
-    const {search,setSearch,showSearch,setShowSearch} =useContext(ShopContext);
+    const {search,setSearch,showSearch,setShowSearch,getCartCount} =useContext(ShopContext);
     const [visible,setVisible] = useState(false);
     const nav = useNavigate();
    
@@ -69,8 +69,9 @@ const Navbar = () => {
              nav('/collection');
           }} src={sicon} className='w-6' alt="search-icon"/>
       <div className='group relative'>
+       <Link to='/login'>
         <img src={profileicon} className='w-5 cursor-pointer' alt="profile-icon"/>
-      
+        </Link>
          <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
 
            <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 
@@ -90,7 +91,7 @@ const Navbar = () => {
 
           <p className='absolute right-[-5px] bottom-[-5px] w-4 
           text-center leading-4 bg-black text-white aspect-square rounded-full
-          text-[8px]'>10</p>
+          text-[8px]'>{getCartCount()}</p>
       </Link>
 
        <img onClick={()=>setVisible(true)} src={menuicon} alt="menu-icon" className='w-10 cursor-pointer sm:hidden'/>

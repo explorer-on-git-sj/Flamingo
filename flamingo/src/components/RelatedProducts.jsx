@@ -37,7 +37,7 @@ const RelatedProducts = ({category,subCategory}) => {
                 <ProductItem key={index} 
                 id={item.id}
                 name={item.name}
-                price={item.price}
+                price={item.new_price}
                 image={item.image}
                 />
             ))
