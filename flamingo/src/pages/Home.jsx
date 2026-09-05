@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 
 const Home = () => {
   return (
-    <div>
+    <div className='space-y-4'>
       <Hero/>
       <LatestCollection/>
       <BestSeller/>

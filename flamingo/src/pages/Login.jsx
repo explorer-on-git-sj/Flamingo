@@ -8,27 +8,29 @@ const Login = () => {
 
   const [currentState,setCurrentState] = useState('Sign Up');
   return (
-    <form className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800'>
-      <div className='inline-flex items-center gap-2 mb-2 mt-10'>
-        <p className='prata-regular text-3xl'>{currentState}</p>
-       <hr className='border-none h-[1.5px] w-8 bg-gray-800'/>
+    <form className='flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 mb-20 gap-4
+    text-gray-800 dark:text-gray-200 glass-strong rounded-3xl px-8 py-10'>
+      <div className='inline-flex items-center gap-2 mb-2 mt-2'>
+        <p className='prata-regular text-3xl gradient-text'>{currentState}</p>
+       <hr className='border-none h-[1.5px] w-8 bg-gradient-to-r from-rose-400 to-pink-400'/>
       </div>
 
-      {currentState==='Login'?'':<input type="text" className='w-full px-3 py-2 border border-gray-800' placeholder='Name' required/>}
-      <input type="email" className='w-full px-3 py-2 border border-gray-800' placeholder='Email' required/>
-      <input type="password" className='w-full px-3 py-2 border border-gray-800' placeholder='Password' required/>
+      {currentState==='Login'?'':<input type="text" className='w-full px-3 py-2.5 rounded-lg glass glow-ring outline-none text-sm' placeholder='Name' required/>}
+      <input type="email" className='w-full px-3 py-2.5 rounded-lg glass glow-ring outline-none text-sm' placeholder='Email' required/>
+      <input type="password" className='w-full px-3 py-2.5 rounded-lg glass glow-ring outline-none text-sm' placeholder='Password' required/>
 
-     <div className='w-full flex justify-between text-sm mt-[-8px]'>
-        <p className='cursor-pointer'>Forgot your password?</p>
+     <div className='w-full flex justify-between text-sm mt-[-8px] text-gray-500 dark:text-gray-400'>
+        <p className='cursor-pointer hover:text-rose-500 dark:hover:text-rose-400 transition-colors'>Forgot your password?</p>
         {
           currentState=== 'Login'
           ?
-          <p onClick={()=>setCurrentState('Sign Up')} className='cursor-pointer'>Create Account</p>:
-          <p onClick={()=>setCurrentState('Login')} className='cursor-pointer'>Login Here</p>
+          <p onClick={()=>setCurrentState('Sign Up')} className='cursor-pointer hover:text-rose-500 dark:hover:text-rose-400 transition-colors'>Create Account</p>:
+          <p onClick={()=>setCurrentState('Login')} className='cursor-pointer hover:text-rose-500 dark:hover:text-rose-400 transition-colors'>Login Here</p>
         }
      </div>
 
-     <button className='bg-black text-white font-light px-8 py-2 mt-4'>{currentState==='Login'? 'Sign In':'Sign Up'}</button>
+     <button className='bg-gradient-to-r from-rose-500 to-pink-500 text-white font-light px-8 py-2.5 mt-4
+     rounded-full hover:shadow-lg hover:shadow-rose-500/30 transition-shadow duration-300'>{currentState==='Login'? 'Sign In':'Sign Up'}</button>
 
     </form>
   )

@@ -15,8 +15,11 @@ import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
 const App = () => {
   return (
+    <div className='min-h-screen bg-gradient-to-b from-rose-50 via-white to-pink-50
+    dark:from-[#0b0f1a] dark:via-[#0d1220] dark:to-[#0b0f1a]
+    text-gray-800 dark:text-gray-200 transition-colors duration-500'>
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
-      <ToastContainer/>
+      <ToastContainer theme='colored'/>
       <Navbar/> 
       <SearchBar/> 
       <Routes>
@@ -32,6 +35,7 @@ const App = () => {
       </Routes>
 
       <Footer/>
+    </div>
     </div>
   )
 }

@@ -16,11 +16,11 @@ const LatestCollection = () => {
 
 
   return (
-    <div className='my-10'>
+    <div className='my-16'>
        <div className='text-center py-8 text-3xl'>
        <Title text1={'Latest '} text2={'Collections'}/>
        <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base
-        text-gray-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, eum repudiandae ducimus ipsam, quibusdam consequatur veritatis eaque impedit in perferendis autem
+        text-gray-600 dark:text-gray-400'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, eum repudiandae ducimus ipsam, quibusdam consequatur veritatis eaque impedit in perferendis autem
          quia fugit eius explicabo nesciunt fuga accusantium eligendi saepe.</p>
        </div>
 

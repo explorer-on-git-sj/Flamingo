@@ -1,23 +1,119 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
 @import "tailwindcss";
+
+/* Enable class-based dark mode (Tailwind v4 has no config file, so we
+   declare the variant explicitly). Add/remove the `dark` class on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 a.active hr {
   display: block !important;
 }
-*{
-   font-family: Outfit,sans-serif;
+
+* {
+  font-family: Outfit, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fdf6f2;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark body {
+  background: #0b0f1a;
+}
+
 .prata-regular {
   font-family: "Prata", serif;
   font-weight: 400;
   font-style: normal;
 }
 
- ::-webkit-scrollbar{
-   display:none;
+::-webkit-scrollbar {
+  display: none;
 }
-@media (max-width:640px){
-     a.active{
-        background-color: black;
-        color: white;
-     }
+
+@media (max-width: 640px) {
+  a.active {
+    background-color: black;
+    color: white;
+  }
+  .dark a.active {
+    background-color: white;
+    color: black;
+  }
+}
+
+/* ---------- Flamingo design system ---------- */
+
+:root {
+  --flamingo-from: #fb7185;
+  --flamingo-to: #f472b6;
+}
+
+/* Glassmorphism surface, light + dark aware */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08);
+}
+
+.dark .glass {
+  background: rgba(17, 22, 38, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 40px rgba(31, 38, 135, 0.1);
+}
+
+.dark .glass-strong {
+  background: rgba(15, 19, 33, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--flamingo-from), var(--flamingo-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-ring:focus-within {
+  box-shadow: 0 0 0 3px rgba(251, 113, 133, 0.35);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease both;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
 }

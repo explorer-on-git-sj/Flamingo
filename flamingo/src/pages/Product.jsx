@@ -12,6 +12,7 @@ const Product = () => {
   const [image, setImage] = useState('')
   const [size,setSize] = useState('')
 
+
   const fetchProductData =  () => {
       products.map((item) => {
          if (item.id == productId) {
@@ -27,7 +28,7 @@ const Product = () => {
   }, [productId, products])
 
   return ProductData?(
-    <div className='border-t-2 pt-10 transition-opacity ease-in 
+    <div className='border-t-2 border-gray-200 dark:border-white/10 pt-10 transition-opacity ease-in 
     duration-500 opacity-100'> 
     <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
 
@@ -40,15 +41,19 @@ const Product = () => {
              
               {
                 ProductData.image.map((item,index)=>(
-                    <img onClick={()=>setImage(item)}
-                    src={item} key={index} className='w-[24%] sm:w-full
-                     sm:mb-3 flex-shrink-0 cursor-pointer' />
+                    <img onClick={()=>
+                      setImage(item)
+                     
+                    }
+                    src={item} key={index} className={`w-[24%] sm:w-full
+                     sm:mb-3 flex-shrink-0 cursor-pointer rounded-xl transition-all duration-200
+                     hover:opacity-80 ${item===image? 'ring-2 ring-rose-400' : ''}`} />
                 ))
               }
              
            </div>
 
-            <div className='w-full sm:w-[80%]'>
+            <div className='w-full sm:w-[80%] glass rounded-2xl overflow-hidden'>
                <img className='w-full h-auto' src={image} alt="" />
             </div>
 
@@ -57,7 +62,7 @@ const Product = () => {
       {/* Product Info */}
 
       <div className='flex-1'>
-        <h1 className='font-medium text-2xl mt-2'>
+        <h1 className='font-medium text-2xl mt-2 text-gray-800 dark:text-gray-100'>
           {ProductData.name}
         </h1>
         <div className='flex items-center gap-1 mt-2'>
@@ -67,37 +72,41 @@ const Product = () => {
           <img src={star} className='w-3 5' />
           <img src={star} className='w-3 5' />
           <img src={star_dull} className='w-3 5' />
-          <p className='pl-2'>{122}</p>
+          <p className='pl-2 text-gray-600 dark:text-gray-400'>{122}</p>
         </div>
         <div>
           <p
-          className='mt-5 text-3xl font-medium'
+          className='mt-5 text-3xl font-semibold gradient-text'
           >{currency}{ProductData.new_price}</p>
           <p className='mt-5 
-          text-gray-500 md:w-4/5'>{ProductData.description}</p>
+          text-gray-500 dark:text-gray-400 md:w-4/5'>{ProductData.description}</p>
           <div className='flex flex-col gap-4 my-8'>
-            <p>Select Size</p>
+            <p className='text-gray-700 dark:text-gray-300'>Select Size</p>
             <div className='flex gap-2'>
                {
                 ProductData.sizes.map((item,index)=>(
                      <button onClick={
-                      ()=> setSize(item)
+                      ()=> 
+                        setSize(item)
+                      
+                      
                      }
-                     className={` border
-                      py-2 px-4 bg-gray-100 ${item===size?
-                        'border-orange-500':''
-                      }`} key={index}>{item}</button>
+                    className={`rounded-lg py-2 px-4 text-gray-700 dark:text-gray-200
+                    transition-all duration-200
+                         ${item === size
+                   ? 'border-2 border-pink-500 ring-2 ring-rose-500'
+                   : 'border-2 border-transparent'}`} key={index}>{item}</button>
                 ))
                }
             </div>
           </div>
-          <button className='bg-black text-white 
-          px-8 py-3 text-sm active:bg-gray-700'
+          <button className='bg-gradient-to-r from-rose-500 to-pink-500 text-white 
+          px-8 py-3.5 text-sm rounded-full hover:shadow-lg hover:shadow-rose-500/30 active:scale-95 transition-all duration-300'
           onClick={()=>addToCart(ProductData.id, size)}
           >ADD TO CART</button>
-          <hr className='mt-8 sm:w-4/5'/>
+          <hr className='mt-8 sm:w-4/5 border-gray-200 dark:border-white/10'/>
 
-          <div className='text-sm text-gray-500 mt-5 flex
+          <div className='text-sm text-gray-500 dark:text-gray-400 mt-5 flex
            flex-col gap-1'>
                <p>100% Original product.</p>
                <p>Cash on delivery is available for this product</p>
@@ -111,16 +120,16 @@ const Product = () => {
 
       <div className='mt-20'>
          <div className='flex'>
-            <b className='border px-5 py-3 text-sm'>
+            <b className='glass-strong rounded-t-xl px-5 py-3 text-sm text-gray-800 dark:text-gray-100'>
               Description
             </b>
-            <p className='border px-5 py-3 text-sm'>
+            <p className='glass rounded-t-xl px-5 py-3 text-sm text-gray-600 dark:text-gray-400'>
               Reviews {122}
             </p>
          </div>
 
-         <div className='flex flex-col gap-4 border px-6 
-         py-6 text-sm text-gray-500'>
+         <div className='flex flex-col gap-4 glass rounded-b-2xl rounded-tr-2xl px-6 
+         py-6 text-sm text-gray-500 dark:text-gray-400'>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aut alias ex. Error voluptate deserunt ipsum earum maiores cum magni! Quis neque deserunt quo, eaque similique tenetur numquam eveniet soluta. Excepturi officiis praesentium nesciunt necessitatibus blanditiis veniam, eos facere fuga.</p>
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem iste, voluptate est obcaecati optio minima, facere quis, eos maiores laudantium magnam dolorem voluptatum aliquid? Ipsam delectus iure minima reiciendis tenetur.</p>
          </div>
